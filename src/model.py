@@ -1,0 +1,24 @@
+import torch.nn as nn
+CLASSES = ["airplane", "automobile", "bird", "cat", "deer",
+            "dog", "frog", "horse", "ship", "truck"]
+MEAN = (0.4914, 0.4822, 0.4465)
+STD = (0.2470, 0.2435, 0.2616)
+class SimpleCNN(nn.Module):
+    def __init__(self, num_classes=10):
+        super().__init__()
+        self.features = nn.Sequential(
+            nn.Conv2d(3, 32, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2), # -> 32x16x16
+            nn.Conv2d(32, 64, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2), # -> 64x8x8
+            nn.Conv2d(64, 128, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2), # -> 128x4x4
+    )
+        self.classifier = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(128 * 4 * 4, 256), nn.ReLU(),
+            nn.Linear(256, num_classes),
+    )   
+    def forward(self, x):
+     return self.classifier(self.features(x))
+def build_model(name, pretrained=True):
+    if name == "cnn":
+        return SimpleCNN()
+    raise ValueError(f"Unknown model: {name}")
