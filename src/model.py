@@ -39,7 +39,7 @@ def build_model(name, pretrained=True):
         return SimpleCNN()
     if name =="improved_cnn":
         return ImprovedCNN()
-    if name == "resnet18":
+    if name == "resnet":
         from torchvision.models import resnet18, ResNet18_Weights
         model = resnet18(weights=ResNet18_Weights.DEFAULT if pretrained else None)
         model.fc = nn.Linear(model.fc.in_features, 10)

@@ -6,12 +6,12 @@ from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from model import build_model, MEAN, STD
 
-MODEL = "improved_cnn" 
-EPOCHS = 25
+MODEL = "resnet" 
+EPOCHS = 8
 BATCH_SIZE = 64
-LR = 1e-3
+LR = 1e-4
 AUGMENT = True
-USE_SCHEDULER = True
+USE_SCHEDULER = False
 
 def get_loaders():
     base = [T.ToTensor(), T.Normalize(MEAN, STD)]

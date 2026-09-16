@@ -7,3 +7,9 @@ pip install -r requirements.txt
 
 ## Usage
 python src/train.py
+
+## Baseline CNN
+75.6%
+
+## CNN with augmentation and batch normalization
+80.9%
