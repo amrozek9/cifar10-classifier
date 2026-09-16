@@ -13,3 +13,6 @@ python src/train.py
 
 ## CNN with augmentation and batch normalization
 80.9%
+
+## ResNet
+83.8%
