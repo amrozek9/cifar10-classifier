@@ -5,13 +5,16 @@ import torchvision.transforms as T
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from model import build_model, MEAN, STD
-
+# Settings used per model:
+#   cnn           EPOCHS=15, LR=1e-3, AUGMENT=False, USE_SCHEDULER=False
+#   cnn_improved  EPOCHS=25, LR=1e-3, AUGMENT=True,  USE_SCHEDULER=True
+#   resnet        EPOCHS=8,  LR=1e-4, AUGMENT=True,  USE_SCHEDULER=False (Colab GPU)
 MODEL = "cnn_improved" 
-EPOCHS = 8
+EPOCHS = 25
 BATCH_SIZE = 64
-LR = 1e-4
+LR = 1e-3
 AUGMENT = True
-USE_SCHEDULER = False
+USE_SCHEDULER = True
 
 def get_loaders():
     base = [T.ToTensor(), T.Normalize(MEAN, STD)]
@@ -25,6 +28,7 @@ def get_loaders():
     return train_loader, val_loader
 
 def run_epoch(model, loader, loss_fn, device, optimizer=None):
+    """Run one epoch. Passing an optimizer trains; omitting it evaluates."""
     training = optimizer is not None
     model.train() if training else model.eval()
     total_loss, correct, total = 0.0, 0, 0

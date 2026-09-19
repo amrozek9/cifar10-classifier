@@ -13,6 +13,7 @@ class SimpleCNN(nn.Module):
     )
         self.classifier = nn.Sequential(
             nn.Flatten(),
+            # 128 channels at 4x4 after three poolings
             nn.Linear(128 * 4 * 4, 256), nn.ReLU(),
             nn.Linear(256, num_classes),
     )   

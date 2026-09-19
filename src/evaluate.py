@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay
 from model import build_model, CLASSES, MEAN, STD
 def main():
-    model_name = sys.argv[1] if len(sys.argv) > 1 else "improved_cnn"
+    model_name = sys.argv[1] if len(sys.argv) > 1 else "cnn_improved"
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     transform = T.Compose([T.ToTensor(), T.Normalize(MEAN, STD)])
