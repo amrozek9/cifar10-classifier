@@ -18,6 +18,7 @@ class SimpleCNN(nn.Module):
     )   
     def forward(self, x):
      return self.classifier(self.features(x))
+    
 class ImprovedCNN(nn.Module):
     def __init__(self, num_classes=10):
         super().__init__()
@@ -37,7 +38,7 @@ class ImprovedCNN(nn.Module):
 def build_model(name, pretrained=True):
     if name == "cnn":
         return SimpleCNN()
-    if name =="improved_cnn":
+    if name =="cnn_improved":
         return ImprovedCNN()
     if name == "resnet":
         from torchvision.models import resnet18, ResNet18_Weights

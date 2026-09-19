@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from model import build_model, MEAN, STD
 
-MODEL = "resnet" 
+MODEL = "cnn_improved" 
 EPOCHS = 8
 BATCH_SIZE = 64
 LR = 1e-4
