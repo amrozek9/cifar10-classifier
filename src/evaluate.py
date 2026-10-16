@@ -30,7 +30,7 @@ def main():
         idx = [j for j, label in enumerate(labels) if label == i]
         acc = sum(preds[j] == i for j in idx) / len(idx)
         print(f" {name:12s} {acc:.3f}")
-    overall = sum(p == l for p, l in zip(preds, labels)) / len(labels)
+    overall = sum(p == y for p, y in zip(preds, labels)) / len(labels)
     print(f"Overall: {overall:.3f}")
 
     fig, ax = plt.subplots(figsize=(9, 9))
