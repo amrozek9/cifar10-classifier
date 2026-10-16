@@ -1,5 +1,7 @@
 # CIFAR-10 Image Classifier
 
+[![CI](https://github.com/amrozek9/cifar10-classifier/actions/workflows/ci.yml/badge.svg)](https://github.com/amrozek9/cifar10-classifier/actions/workflows/ci.yml)
+
 A CNN trained from scratch and a fine-tuned ResNet18 on CIFAR-10, built with PyTorch.
 
 ## Setup
